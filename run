@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Arranque rápido de AMAZING.
+#
+# Uso:
+#   ./run            # juego TUI interactivo (uv run amazing play)
+#   ./run print      # vuelco ASCII fiel al 1978
+#   ./run demo       # demo determinista BFS
+#   ./run tests      # pasarela completa: lint, types, tests
+#   ./run --help     # ayuda completa del CLI
+
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+# Comprobar uv. Si no está, ofrecer instalarlo.
+if ! command -v uv >/dev/null 2>&1; then
+    echo "uv no encontrado. Instalar con:"
+    echo "  curl -LsSf https://astral.sh/uv/install.sh | sh"
+    echo "(o ver https://docs.astral.sh/uv/ para otras opciones)"
+    exit 1
+fi
+
+# Sincronizar dependencias sólo si .venv no existe (atajo barato).
+if [ ! -d .venv ]; then
+    echo ">> primer arranque: instalando dependencias con uv sync..."
+    uv sync --all-extras
+fi
+
+case "${1:-play}" in
+    tests)
+        uv run ruff format --check .
+        uv run ruff check .
+        uv run mypy --strict src
+        uv run pytest
+        ;;
+    play|print|demo)
+        uv run amazing "$@"
+        ;;
+    *)
+        uv run amazing "$@"
+        ;;
+esac

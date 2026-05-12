@@ -31,15 +31,41 @@ con:
 El código BASIC original vive intacto en `legacy/ibm-pc/amazing.bas` y
 el análisis arqueológico completo en `docs/original_program_analysis.md`.
 
-## Instalación
+## Arranque rápido
+
+Si tienes [uv](https://docs.astral.sh/uv/) instalado, una sola línea:
 
 ```bash
-git clone https://github.com/davidvivo-ia/amazing.python
-cd amazing.python
-uv sync --all-extras
+./run                 # juego TUI interactivo
+./run print           # vuelco ASCII fiel al 1978
+./run demo            # demo determinista (genera, resuelve y muestra)
+./run tests           # pasarela completa: ruff + mypy + pytest
 ```
 
-Requiere Python 3.13+ y [uv](https://docs.astral.sh/uv/).
+El script instala dependencias la primera vez y delega en `uv run` después.
+
+Alternativas equivalentes:
+
+```bash
+make play             # equivalente a ./run
+make demo             # equivalente a ./run demo
+make tests            # equivalente a ./run tests
+
+# o, directo, sin script:
+uv sync --all-extras
+uv run amazing play
+```
+
+¿No tienes `uv`?
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Requiere Python 3.13+; `uv` se encarga de descargarlo si tu sistema no
+lo tiene.
+
+## Instalación detallada
 
 ## Uso
 
