@@ -33,7 +33,7 @@ el análisis arqueológico completo en `docs/original_program_analysis.md`.
 
 ## Arranque rápido
 
-Si tienes [uv](https://docs.astral.sh/uv/) instalado, una sola línea:
+### Linux · macOS · WSL
 
 ```bash
 ./run                 # juego TUI interactivo
@@ -42,28 +42,53 @@ Si tienes [uv](https://docs.astral.sh/uv/) instalado, una sola línea:
 ./run tests           # pasarela completa: ruff + mypy + pytest
 ```
 
-El script instala dependencias la primera vez y delega en `uv run` después.
+O con `make`: `make play`, `make demo`, `make tests`.
 
-Alternativas equivalentes:
+### Windows
+
+Desde PowerShell:
+
+```powershell
+.\run.ps1             # juego TUI interactivo
+.\run.ps1 print       # vuelco ASCII fiel al 1978
+.\run.ps1 demo        # demo determinista
+.\run.ps1 tests       # pasarela completa
+```
+
+Desde `cmd.exe`:
+
+```bat
+run                   :: juego TUI interactivo
+run print             :: vuelco ASCII fiel al 1978
+run demo              :: demo determinista
+run tests             :: pasarela completa
+```
+
+> **Nota**: si PowerShell rechaza ejecutar `run.ps1` por la política
+> de ejecución, ábrela una vez con
+> `powershell -ExecutionPolicy Bypass -File .\run.ps1`.
+
+Los tres scripts hacen lo mismo: instalan dependencias la primera vez
+con `uv sync` y delegan en `uv run amazing <args>` después.
+
+### ¿No tienes `uv`?
+
+| SO | Comando |
+| --- | --- |
+| Linux · macOS · WSL | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
+| Windows (PowerShell) | `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 \| iex"` |
+
+Requiere Python 3.13+; `uv` se encarga de descargarlo si tu sistema no
+lo tiene.
+
+### Forma larga (sin scripts)
 
 ```bash
-make play             # equivalente a ./run
-make demo             # equivalente a ./run demo
-make tests            # equivalente a ./run tests
-
-# o, directo, sin script:
 uv sync --all-extras
 uv run amazing play
 ```
 
-¿No tienes `uv`?
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-Requiere Python 3.13+; `uv` se encarga de descargarlo si tu sistema no
-lo tiene.
+Esto funciona idénticamente en Linux, macOS y Windows.
 
 ## Instalación detallada
 
