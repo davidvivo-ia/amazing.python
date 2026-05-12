@@ -33,6 +33,21 @@ el análisis arqueológico completo en `docs/original_program_analysis.md`.
 
 ## Arranque rápido
 
+### Sólo Python (cualquier SO)
+
+Si tienes Python 3.13+ instalado, basta con un único programa:
+
+```bash
+python play.py              # juego TUI interactivo
+python play.py print        # vuelco ASCII fiel al 1978
+python play.py demo         # demo determinista (BFS)
+python play.py tests        # pasarela completa: ruff + mypy + pytest
+```
+
+`play.py` detecta `uv` o `pip` y se instala solo la primera vez.
+Funciona idéntico en Linux, macOS y Windows. Si no tienes ninguno, te
+dice cómo instalar `uv` en una línea.
+
 ### Linux · macOS · WSL
 
 ```bash

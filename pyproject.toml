@@ -112,6 +112,7 @@ ignore = [
 "src/amazing/__main__.py" = ["D"]
 "src/amazing/presentation/cli.py" = ["PLC0415"]  # lazy Textual import on purpose
 "tests/property/test_carve_properties.py" = ["D", "ANN", "PLR2004", "S101", "PLC0415"]
+"play.py" = ["PLC0415", "D103"]  # bootstrap script: stdlib-only top level by design
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
