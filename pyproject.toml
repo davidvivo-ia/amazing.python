@@ -113,6 +113,7 @@ ignore = [
 "src/amazing/presentation/cli.py" = ["PLC0415"]  # lazy Textual import on purpose
 "tests/property/test_carve_properties.py" = ["D", "ANN", "PLR2004", "S101", "PLC0415"]
 "play.py" = ["PLC0415", "D103"]  # bootstrap script: stdlib-only top level by design
+"amazing.py" = ["D102", "D103", "PLR0911"]  # standalone zero-deps script: tight & flat by design
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -140,6 +141,7 @@ ignore_missing_imports = false
 [tool.pytest.ini_options]
 minversion = "8.0"
 testpaths = ["tests"]
+pythonpath = ["src"]
 addopts = [
     "-ra",
     "--strict-markers",
@@ -147,6 +149,7 @@ addopts = [
     "--cov=src/amazing",
     "--cov-report=term-missing",
     "--cov-fail-under=80",
+    "--import-mode=importlib",
 ]
 markers = [
     "slow: tests that take >1s",

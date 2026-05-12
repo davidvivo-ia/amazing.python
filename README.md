@@ -33,20 +33,36 @@ el análisis arqueológico completo en `docs/original_program_analysis.md`.
 
 ## Arranque rápido
 
-### Sólo Python (cualquier SO)
+### Mínimo absoluto: un único Python, cero dependencias
 
-Si tienes Python 3.13+ instalado, basta con un único programa:
+Si tienes **cualquier Python 3.10+**, el laberinto se ejecuta sin
+instalar nada:
 
 ```bash
-python play.py              # juego TUI interactivo
-python play.py print        # vuelco ASCII fiel al 1978
-python play.py demo         # demo determinista (BFS)
-python play.py tests        # pasarela completa: ruff + mypy + pytest
+python amazing.py                          # laberinto 12×8
+python amazing.py --width 20 --height 12   # tamaño a medida
+python amazing.py --seed 42                # reproducible
+python amazing.py --demo                   # genera + resuelve por BFS
+python amazing.py --unicode                # caracteres box-drawing
+python amazing.py --help                   # ayuda
+```
+
+Es la versión mínima jugable, sólo `import`s de la stdlib. Idéntico en
+Linux, macOS y Windows. Suficiente para ver, generar y resolver
+laberintos.
+
+### TUI completa con auto-instalación
+
+Para la TUI Textual con temas, cronómetro y estadísticas:
+
+```bash
+python play.py                # juego TUI interactivo
+python play.py print          # vuelco ASCII fiel al 1978
+python play.py demo           # demo determinista
+python play.py tests          # pasarela completa: ruff + mypy + pytest
 ```
 
 `play.py` detecta `uv` o `pip` y se instala solo la primera vez.
-Funciona idéntico en Linux, macOS y Windows. Si no tienes ninguno, te
-dice cómo instalar `uv` en una línea.
 
 ### Linux · macOS · WSL
 
