@@ -1,0 +1,90 @@
+/*
+ * AMAZING — Textual CSS
+ *
+ * Three themes share the same layout and differ only in the colour
+ * tokens applied at the screen level via the `.theme-*` class.
+ */
+
+Screen {
+    background: #0a1410;
+    color: #33ff66;
+}
+
+#layout {
+    layout: vertical;
+    padding: 1 2;
+    height: 100%;
+}
+
+#maze-view {
+    content-align: center middle;
+    color: $primary;
+    background: $background;
+    padding: 1 2;
+    border: round $primary-darken-2;
+    height: auto;
+}
+
+#stats {
+    dock: bottom;
+    padding: 1 2;
+    border: round $primary-darken-2;
+    color: $accent;
+    background: $background;
+    height: auto;
+}
+
+Header {
+    background: $background;
+    color: $primary;
+}
+
+Footer {
+    background: $background;
+    color: $primary-darken-2;
+}
+
+/* -------------------------------------------------------- phosphor (default) */
+.theme-phosphor {
+    background: #0a1410;
+}
+.theme-phosphor #maze-view {
+    color: #33ff66;
+    border: round #1d8a39;
+}
+.theme-phosphor #stats {
+    color: #ffb454;
+    border: round #1d8a39;
+}
+
+/* ------------------------------------------------------------------ paper */
+.theme-paper {
+    background: #faf3e0;
+    color: #2b2118;
+}
+.theme-paper #maze-view {
+    color: #2b2118;
+    background: #faf3e0;
+    border: round #c1463a;
+}
+.theme-paper #stats {
+    color: #c1463a;
+    background: #faf3e0;
+    border: round #2b2118;
+}
+
+/* ------------------------------------------------------------------ amber */
+.theme-amber {
+    background: #1a0e00;
+    color: #ffb000;
+}
+.theme-amber #maze-view {
+    color: #ffb000;
+    background: #1a0e00;
+    border: round #ff5722;
+}
+.theme-amber #stats {
+    color: #ff5722;
+    background: #1a0e00;
+    border: round #ffb000;
+}
